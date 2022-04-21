@@ -1,11 +1,12 @@
 import React from 'react';
 interface Props {
-  setSearchText?: any;
+  setSearchText: Function;
 }
 
 export default function Search({ setSearchText }: Props) {
-  function handleSearchText(e: any) {
-    setSearchText(e.target.value);
+  function handleSearchText(e: React.ChangeEvent) {
+    const target = e.target as HTMLTextAreaElement;
+    setSearchText(target.value);
   }
 
   return (

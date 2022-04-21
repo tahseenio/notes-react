@@ -12,16 +12,13 @@ interface stateProps {
 }
 
 export default function NotesList() {
-  const [notes, setNotes] = useState<stateProps[]>(
-    // JSON.parse(localStorage.getItem('react-notes-data')!)
-    [
-      {
-        id: nanoid(),
-        text: 'test',
-        date: '1967/10/2002',
-      },
-    ]
-  );
+  const [notes, setNotes] = useState<stateProps[]>([
+    {
+      id: nanoid(),
+      text: 'test',
+      date: '17/10/2002',
+    },
+  ]);
 
   const [searchText, setSearchText] = useState('');
 
@@ -31,7 +28,6 @@ export default function NotesList() {
   }, []);
 
   useEffect(() => {
-    console.log('notes changed');
     localStorage.setItem('react-notes-data', JSON.stringify(notes));
   }, [notes]);
 
