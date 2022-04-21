@@ -13,7 +13,14 @@ interface stateProps {
 
 export default function NotesList() {
   const [notes, setNotes] = useState<stateProps[]>(
-    JSON.parse(localStorage.getItem('react-notes-data')!)
+    // JSON.parse(localStorage.getItem('react-notes-data')!)
+    [
+      {
+        id: nanoid(),
+        text: 'test',
+        date: '1967/10/2002',
+      },
+    ]
   );
 
   const [searchText, setSearchText] = useState('');
