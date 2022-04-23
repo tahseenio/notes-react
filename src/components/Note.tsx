@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { MdDeleteForever, MdModeEdit, MdDone } from 'react-icons/md';
+import { MdDeleteForever } from 'react-icons/md';
 interface Props {
   id: string;
   text: string;
@@ -17,11 +16,14 @@ export default function Note({
 }: Props) {
   return (
     <div className='note'>
-      <input
+      <textarea
         className='note__input'
+        cols={10}
+        rows={8}
+        maxLength={200}
         value={text}
         onChange={(e) => handleEditNote(e, id)}
-      ></input>
+      ></textarea>
       <div className='note__footer'>
         {date}
         <div className='buttons--wrapper'>
