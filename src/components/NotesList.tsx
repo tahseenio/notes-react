@@ -18,6 +18,11 @@ export default function NotesList() {
       text: 'test',
       date: '17/10/2002',
     },
+    {
+      id: nanoid(),
+      text: 'hello',
+      date: '19/10/2002',
+    },
   ]);
 
   const [searchText, setSearchText] = useState('');
@@ -31,7 +36,7 @@ export default function NotesList() {
     localStorage.setItem('react-notes-data', JSON.stringify(notes));
   }, [notes]);
 
-  const handleAddNote = (text: string) => {
+  const handleAddNote = (text: string): void => {
     const date = new Date();
     const newObject = [
       ...notes,
@@ -44,9 +49,23 @@ export default function NotesList() {
     setNotes(newObject);
   };
 
-  const handleDeleteNote = (id: string) => {
+  const handleDeleteNote = (id: string): void => {
     const newNote = notes.filter((elem) => elem.id !== id);
     setNotes(newNote);
+  };
+
+  const handleEditNote = (e: any, id: string): void => {
+    // console.log('ID IS:', id, 'Element to change to is:', e.target.value);
+
+    const changedNote = notes.map((elem) => {
+      if (elem.id === id) {
+        return {
+          ...elem,
+          text: e.target.value,
+        };
+      } else return elem;
+    });
+    setNotes(changedNote);
   };
 
   return (
@@ -54,6 +73,7 @@ export default function NotesList() {
       <Header />
       <Search setSearchText={setSearchText} />
       <section className='notes__list'>
+        <AddNote handleAddNote={handleAddNote} />
         {notes
           .filter((elem) => elem.text.toLowerCase().includes(searchText))
           .map((note) => (
@@ -62,11 +82,11 @@ export default function NotesList() {
               id={note.id}
               text={note.text}
               date={note.date}
-              {...{ handleDeleteNote }}
+              {...{ handleDeleteNote, handleEditNote }}
             />
           ))}
-        <AddNote handleAddNote={handleAddNote} />
       </section>
+      <pre>{JSON.stringify(notes, null, 2)}</pre>
     </main>
   );
 }

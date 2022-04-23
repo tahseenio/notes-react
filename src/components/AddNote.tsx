@@ -4,15 +4,15 @@ interface Props {
   handleAddNote: Function;
 }
 
-export default function AddNote({ handleAddNote }: Props) {
-  const [noteText, setNoteText] = useState('');
+const AddNote = ({ handleAddNote }: Props) => {
+  const [noteText, setNoteText] = useState<string>('');
   const charLimit = 200;
 
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
     setNoteText(e.target.value);
   };
 
-  const handleSaveClick = () => {
+  const handleSaveClick = (): void => {
     if (noteText.trim().length > 0) {
       handleAddNote(noteText);
       setNoteText('');
@@ -38,4 +38,6 @@ export default function AddNote({ handleAddNote }: Props) {
       </div>
     </div>
   );
-}
+};
+
+export default AddNote;

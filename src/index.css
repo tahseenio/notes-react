@@ -37,6 +37,16 @@ Notes
   white-space: pre-wrap;
 }
 
+.note__input {
+  background-color: transparent;
+  border: none;
+}
+
+.note__input:focus {
+  border: none;
+  outline: none;
+}
+
 .note__footer {
   display: flex;
   align-items: center;
@@ -115,4 +125,15 @@ search
 .notes__header {
   font-size: 38px;
   margin-top: 16px;
+}
+
+.buttons--wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.editBtn,
+.doneBtn {
+  cursor: pointer;
 }
