@@ -10,7 +10,7 @@ interface stateProps {
   id: string;
   text: string;
   date: string;
-  color?: string;
+  color: string;
 }
 
 const NotesList = () => {
@@ -88,7 +88,7 @@ const NotesList = () => {
       />
     ));
 
-  const handleColorChange = (color: any, id: string) => {
+  const handleColorChange = (color: string, id: string) => {
     // console.log('changed to color:', color, 'Folor note with id:', id);
     const updatedNotes = notes.map((elem) => {
       if (elem.id === id) {

@@ -5,7 +5,11 @@ import {
   ColorChangeProps,
 } from '../../context/ColorChangeContext';
 
-export const IndividualColor = ({ color }: any) => {
+interface Props {
+  color: string;
+}
+
+export const IndividualColor = ({ color }: Props) => {
   const { handleColorChange } = useContext(NotesContext) as ContextProps;
   const { toggleColorPane, id } = useContext(
     ColorChangeContext

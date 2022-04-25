@@ -8,7 +8,7 @@ interface Props {
   id: string;
   text: string;
   date: string;
-  color: any;
+  color: string;
 }
 
 export default function Note({ id, text, date, color }: Props) {
