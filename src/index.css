@@ -154,7 +154,7 @@ Color Pane
 .color-pane--wrapper {
   position: absolute;
   list-style: none;
-  background-color: navajowhite;
+  background-color: #4a4a4c;
   padding: 10px 5px;
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
