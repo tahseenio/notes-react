@@ -36,6 +36,7 @@ Notes
   flex-direction: column;
   justify-content: space-between;
   white-space: pre-wrap;
+  overflow: hidden;
 }
 
 .note__input {
@@ -164,6 +165,16 @@ Color Pane
   bottom: 0;
   left: 0;
   right: 0;
+  animation: slide-up 300ms ease-in-out;
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(45px);
+  }
+  to {
+    transform: translateY(0px);
+  }
 }
 
 .color__background {
