@@ -1,19 +1,17 @@
+import { useContext } from 'react';
 import { MdDeleteForever } from 'react-icons/md';
+import { NotesContext } from '../context/NotesContext';
+import { ContextProps } from '../context/NotesContext';
 interface Props {
   id: string;
   text: string;
   date: string;
-  handleDeleteNote: Function;
-  handleEditNote: Function;
 }
 
-export default function Note({
-  id,
-  text,
-  date,
-  handleDeleteNote,
-  handleEditNote,
-}: Props) {
+export default function Note({ id, text, date }: Props) {
+  const { handleEditNote, handleDeleteNote } = useContext(
+    NotesContext
+  ) as ContextProps;
   return (
     <div className='note'>
       <textarea

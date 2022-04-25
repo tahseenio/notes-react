@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { NotesContext } from '../context/NotesContext';
+import { ContextProps } from '../context/NotesContext';
 
-interface Props {
-  handleAddNote: Function;
-}
+const AddNote = () => {
+  const { handleAddNote } = useContext(NotesContext) as ContextProps;
 
-const AddNote = ({ handleAddNote }: Props) => {
   const [noteText, setNoteText] = useState<string>('');
   const charLimit = 200;
 

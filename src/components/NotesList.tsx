@@ -55,7 +55,10 @@ const NotesList = () => {
     setNotes(newNote);
   };
 
-  const handleEditNote = (e: any, id: string): void => {
+  const handleEditNote = (
+    e: React.ChangeEvent<HTMLTextAreaElement>,
+    id: string
+  ): void => {
     const date = new Date();
     const changedNote = notes.map((elem) => {
       if (elem.id === id) {
@@ -72,27 +75,23 @@ const NotesList = () => {
   const updatedNotes = notes
     .filter((elem) => elem.text.toLowerCase().includes(searchText))
     .map((note) => (
-      <Note
-        key={note.id}
-        id={note.id}
-        text={note.text}
-        date={note.date}
-        {...{ handleDeleteNote, handleEditNote }}
-      />
+      <Note key={note.id} id={note.id} text={note.text} date={note.date} />
     ));
 
   return (
-    // <NotesContext value={{ setSearchText }}>
-    <main className='notes__container'>
-      <Header />
-      <Search setSearchText={setSearchText} />
-      <section className='notes__list'>
-        {!searchText && <AddNote handleAddNote={handleAddNote} />}
-        {updatedNotes.length === 0 ? <div>No notes found</div> : updatedNotes}
-      </section>
-      {/* <pre>{JSON.stringify(notes, null, 2)}</pre> */}
-    </main>
-    // </NotesContext>
+    <NotesContext.Provider
+      value={{ setSearchText, handleAddNote, handleDeleteNote, handleEditNote }}
+    >
+      <main className='notes__container'>
+        <Header />
+        <Search />
+        <section className='notes__list'>
+          {!searchText && <AddNote />}
+          {updatedNotes.length === 0 ? <div>No notes found</div> : updatedNotes}
+        </section>
+        <pre>{JSON.stringify(notes, null, 2)}</pre>
+      </main>
+    </NotesContext.Provider>
   );
 };
 

@@ -1,12 +1,12 @@
-import React from 'react';
-interface Props {
-  setSearchText: Function;
-}
+import React, { useContext } from 'react';
+import { NotesContext } from '../context/NotesContext';
+import { ContextProps } from '../context/NotesContext';
 
-export default function Search({ setSearchText }: Props) {
-  function handleSearchText(e: React.ChangeEvent) {
-    const target = e.target as HTMLTextAreaElement;
-    setSearchText(target.value);
+const Search = () => {
+  const { setSearchText } = useContext(NotesContext) as ContextProps;
+
+  function handleSearchText(e: React.ChangeEvent<HTMLInputElement>) {
+    setSearchText(e.target.value);
   }
 
   return (
@@ -21,4 +21,6 @@ export default function Search({ setSearchText }: Props) {
       </div>
     </div>
   );
-}
+};
+
+export default Search;
