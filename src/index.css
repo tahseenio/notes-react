@@ -27,6 +27,7 @@ Notes
 }
 
 .note {
+  position: relative;
   background-color: #fef68a;
   border-radius: 8px;
   padding: 16px;
@@ -52,6 +53,10 @@ Notes
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.date--wrapper {
+  user-select: none;
 }
 
 .deleteBtn {
@@ -135,6 +140,35 @@ search
 }
 
 .editBtn,
+.colorPaneBtn,
 .doneBtn {
+  cursor: pointer;
+}
+
+/* 
+
+Color Pane
+
+*/
+
+.color-pane--wrapper {
+  position: absolute;
+  list-style: none;
+  background-color: navajowhite;
+  padding: 10px 5px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+
+  display: flex;
+  justify-content: space-around;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.color__background {
+  width: 25px;
+  height: 25px;
+  border-radius: 50px;
   cursor: pointer;
 }

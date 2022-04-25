@@ -10,6 +10,7 @@ interface stateProps {
   id: string;
   text: string;
   date: string;
+  color?: string;
 }
 
 const NotesList = () => {
@@ -18,11 +19,13 @@ const NotesList = () => {
       id: nanoid(),
       text: 'test',
       date: '17/10/2002',
+      color: '#fef68a',
     },
     {
       id: nanoid(),
       text: 'hello',
       date: '19/10/2002',
+      color: 'lightblue',
     },
   ]);
 
@@ -45,6 +48,7 @@ const NotesList = () => {
         id: nanoid(),
         text,
         date: date.toLocaleString(),
+        color: '#fef68a',
       },
     ];
     setNotes(newObject);
@@ -75,12 +79,37 @@ const NotesList = () => {
   const updatedNotes = notes
     .filter((elem) => elem.text.toLowerCase().includes(searchText))
     .map((note) => (
-      <Note key={note.id} id={note.id} text={note.text} date={note.date} />
+      <Note
+        key={note.id}
+        id={note.id}
+        text={note.text}
+        date={note.date}
+        color={note.color}
+      />
     ));
+
+  const handleColorChange = (color: any, id: string) => {
+    // console.log('changed to color:', color, 'Folor note with id:', id);
+    const updatedNotes = notes.map((elem) => {
+      if (elem.id === id) {
+        return {
+          ...elem,
+          color,
+        };
+      } else return elem;
+    });
+    setNotes(updatedNotes);
+  };
 
   return (
     <NotesContext.Provider
-      value={{ setSearchText, handleAddNote, handleDeleteNote, handleEditNote }}
+      value={{
+        setSearchText,
+        handleAddNote,
+        handleDeleteNote,
+        handleEditNote,
+        handleColorChange,
+      }}
     >
       <main className='notes__container'>
         <Header />

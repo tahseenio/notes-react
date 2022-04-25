@@ -8,6 +8,7 @@ export interface ContextProps {
     e: React.ChangeEvent<HTMLTextAreaElement>,
     id: string
   ) => void;
+  handleColorChange: (color: any, id: string) => void;
 }
 
 export const NotesContext = createContext<ContextProps | null>(null);
