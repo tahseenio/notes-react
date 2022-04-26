@@ -32,8 +32,15 @@ const NotesList = () => {
   const [searchText, setSearchText] = useState('');
 
   useEffect(() => {
-    const savedNotes = JSON.parse(localStorage.getItem('react-notes-data')!);
-    if (savedNotes) setNotes(savedNotes);
+    if (localStorage.getItem('react-notes-data') === null) {
+      const initLocalStorage = localStorage.setItem(
+        'react-notes-data',
+        JSON.stringify(notes)
+      );
+      setNotes(initLocalStorage!);
+    }
+    // const savedNotes = JSON.parse(localStorage.getItem('react-notes-data')!);
+    // if (savedNotes) setNotes(savedNotes);
   }, []);
 
   useEffect(() => {
