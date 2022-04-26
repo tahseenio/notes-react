@@ -16,7 +16,9 @@ export default function Note({ id, text, date, color }: Props) {
     NotesContext
   ) as ContextProps;
 
-  const [colorPane, toggleColorPane] = useState(false);
+  const [colorPane, toggleColorPane] = useState<boolean>(false);
+
+  const [focus, setFocus] = useState<boolean>(false);
 
   return (
     <ColorChangeContext.Provider value={{ toggleColorPane, id }}>
@@ -28,8 +30,14 @@ export default function Note({ id, text, date, color }: Props) {
           maxLength={200}
           value={text}
           onChange={(e) => handleEditNote(e, id)}
+          onFocus={() => setFocus((state) => !state)}
+          onBlur={() => setFocus((state) => !state)}
         ></textarea>
-        <div className='date--wrapper'>Last Modified: {date}</div>
+        {focus ? (
+          <div className='date--wrapper'>Last Modified: {date}</div>
+        ) : (
+          <div className='date--wrapper'> </div>
+        )}
         <div className='note__footer'>
           <div className='buttons--wrapper'>
             <div
