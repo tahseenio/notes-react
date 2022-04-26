@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { NotesContext } from '../context/NotesContext';
 import { ContextProps } from '../context/NotesContext';
+import { MdSearch } from 'react-icons/md';
 
 const Search = () => {
   const { setSearchText } = useContext(NotesContext) as ContextProps;
@@ -12,10 +13,11 @@ const Search = () => {
   return (
     <div className='search__container'>
       <div className='searchbar'>
+        <MdSearch className='searchIcon' />
         <input
           className='search__input'
           type='text'
-          placeholder='search...'
+          placeholder='Search...'
           onChange={(e) => handleSearchText(e)}
         />
       </div>

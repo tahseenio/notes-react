@@ -29,20 +29,26 @@ export default function Note({ id, text, date, color }: Props) {
           value={text}
           onChange={(e) => handleEditNote(e, id)}
         ></textarea>
+        <div className='date--wrapper'>Last Modified: {date}</div>
         <div className='note__footer'>
-          <div className='date--wrapper'>{date}</div>
           <div className='buttons--wrapper'>
-            <MdOutlineColorLens
-              className='colorPaneBtn'
+            <div
+              className='editBtn--wrapper'
               onClick={() => toggleColorPane((state) => !state)}
-            />
-            <MdDeleteForever
-              className='deleteBtn'
-              size={'1.3em'}
+            >
+              <MdOutlineColorLens className='colorPaneBtn' />
+              Edit Color
+            </div>
+            <div
+              className='deleteBtn--wrapper'
               onClick={() => handleDeleteNote(id)}
-            />
+            >
+              <MdDeleteForever className='deleteBtn' size={'1.3em'} />
+              Delete Note
+            </div>
           </div>
         </div>
+
         {colorPane && <ColorPane {...{ ...toggleColorPane }} />}
       </div>
     </ColorChangeContext.Provider>

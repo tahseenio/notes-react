@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { nanoid } from 'nanoid';
 import Note from './Note';
-import AddNote from './AddNote';
 import Search from './Search';
 import Header from './Header';
 import { NotesContext } from '../context/NotesContext';
@@ -18,8 +17,38 @@ const NotesList = () => {
     {
       id: nanoid(),
       text: 'Edit this or create a new note to get started',
-      date: '17/10/2002',
-      color: '#fef68a',
+      date: '26 April 2022, 17:39',
+      color: '#6fd262',
+    },
+    {
+      id: nanoid(),
+      text: 'First note',
+      date: '26 April 2022, 20:46',
+      color: '#e6b905',
+    },
+    {
+      id: nanoid(),
+      text: 'Second note',
+      date: '26 April 2022, 20:47',
+      color: '#aaaaaa',
+    },
+    {
+      id: nanoid(),
+      text: 'Hello World',
+      date: '26 April 2022, 20:47',
+      color: '#c78eff',
+    },
+    {
+      id: nanoid(),
+      text: 'Fifth note',
+      date: '26 April 2022, 20:47',
+      color: '#ff6d5b',
+    },
+    {
+      id: nanoid(),
+      text: 'Delete me!',
+      date: '26 April 2022, 20:47',
+      color: '#e6b905',
     },
   ]);
 
@@ -47,8 +76,14 @@ const NotesList = () => {
       {
         id: nanoid(),
         text,
-        date: date.toLocaleString(),
-        color: '#fef68a',
+        date: date.toLocaleString('en-GB', {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric',
+          hour: 'numeric',
+          minute: '2-digit',
+        }),
+        color: '#fafafa',
       },
     ];
     setNotes(newObject);
@@ -69,7 +104,13 @@ const NotesList = () => {
         return {
           ...elem,
           text: e.target.value,
-          date: date.toLocaleString(),
+          date: date.toLocaleString('en-GB', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+            hour: 'numeric',
+            minute: '2-digit',
+          }),
         };
       } else return elem;
     });
@@ -89,7 +130,6 @@ const NotesList = () => {
     ));
 
   const handleColorChange = (color: string, id: string) => {
-    // console.log('changed to color:', color, 'Folor note with id:', id);
     const updatedNotes = notes.map((elem) => {
       if (elem.id === id) {
         return {
@@ -115,10 +155,10 @@ const NotesList = () => {
         <Header />
         <Search />
         <section className='notes__list'>
-          {!searchText && <AddNote />}
+          {!searchText}
           {updatedNotes.length === 0 ? <div>No notes found</div> : updatedNotes}
         </section>
-        <pre>{JSON.stringify(notes, null, 2)}</pre>
+        {/* <pre>{JSON.stringify(notes, null, 2)}</pre> */}
       </main>
     </NotesContext.Provider>
   );

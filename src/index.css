@@ -11,11 +11,45 @@
   color: rgb(30, 30, 30);
 }
 
+.App {
+  min-height: 100vh;
+  background-color: #f8f8f8;
+}
+
 /* 
 
 Notes
 
 */
+
+.notes__header--container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+.notes__header {
+  display: flex;
+  align-items: center;
+  font-size: 38px;
+  color: #554bb5;
+}
+.noteIcon,
+.AddIcon {
+  margin-right: 8px;
+}
+
+.AddNoteBtn {
+  color: #554bb5;
+  font-size: 16px;
+  padding: 8px;
+  background-color: #f8f8f8;
+  border: none;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
 
 .notes__container {
   max-width: 960px;
@@ -32,8 +66,8 @@ Notes
 
 .note {
   position: relative;
-  background-color: #fef68a;
-  border-radius: 8px;
+  background-color: #ffffff;
+  border-radius: 4px;
   padding: 16px;
   min-height: 200px;
   display: flex;
@@ -41,12 +75,14 @@ Notes
   justify-content: space-between;
   white-space: pre-wrap;
   overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
 .note__input {
   background-color: transparent;
   border: none;
   resize: none;
+  margin: 8px 0px;
 }
 
 .note__input:focus {
@@ -57,15 +93,54 @@ Notes
 .note__footer {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .date--wrapper {
   user-select: none;
+  font-size: 14px;
+  color: rgb(59, 59, 59);
+  font-weight: 500;
+  margin: 0 auto;
+  padding-bottom: 4px;
 }
 
-.deleteBtn {
+.deleteBtn,
+.colorPaneBtn {
+  margin-right: 4px;
+}
+
+.deleteBtn--wrapper,
+.editBtn--wrapper {
+  display: flex;
+  align-items: center;
   cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 5px;
+  border: 1px black solid;
+  transition: all 300ms;
+}
+
+.deleteBtn--wrapper {
+  background-color: #ef233c;
+  border: 1px #ef233c;
+  color: white;
+  font-weight: 300;
+}
+
+.editBtn--wrapper {
+  background-color: white;
+  margin-right: 8px;
+}
+
+.editBtn--wrapper:hover,
+.deleteBtn--wrapper:hover {
+  filter: brightness(1.3);
+}
+
+.editBtn--wrapper:active,
+.deleteBtn--wrapper:active {
+  transform: translate(-1px, 1px);
 }
 
 /* 
@@ -116,32 +191,41 @@ search
   display: flex;
   align-items: center;
   margin: 16px 0;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
 
 .searchbar {
   position: relative;
   display: flex;
   align-items: center;
-  flex-direction: row-reverse;
+  flex-direction: row;
   width: 100%;
+}
+
+.searchIcon {
+  color: rgb(88, 88, 88);
+  font-size: 1.5rem;
+  position: absolute;
+  left: 8px;
 }
 
 .search__input {
-  padding: 5px;
+  padding: 20px 5px;
+  padding-left: 36px;
   width: 100%;
-  border-radius: 12px;
-  border: 1px solid black;
+  border: 1px solid transparent;
+  background-color: white;
 }
 
-.notes__header {
-  font-size: 38px;
-  margin-top: 16px;
+.search__input:focus {
+  outline: none;
 }
 
 .buttons--wrapper {
   display: flex;
   align-items: center;
-  gap: 8px;
 }
 
 .editBtn,
@@ -161,8 +245,8 @@ Color Pane
   list-style: none;
   background-color: #4a4a4c;
   padding: 10px 5px;
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
 
   display: flex;
   justify-content: space-around;
