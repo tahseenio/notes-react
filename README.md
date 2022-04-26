@@ -1,6 +1,6 @@
 # 🍿 Notes App
 
-<img src="https://img.shields.io/github/deployments/tahseenio/notes-react/master" alt="GitHub Badge"> <img src="https://img.shields.io/github/repo-size/tahseenio/notes-react">
+<img src="https://img.shields.io/github/repo-size/tahseenio/notes-react">
 
 ### Description
 - A Notes App created using TypeScript and React
