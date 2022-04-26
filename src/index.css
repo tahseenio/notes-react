@@ -126,11 +126,13 @@ Notes
   border: 1px #ef233c;
   color: white;
   font-weight: 300;
+  min-width: 122.42px;
 }
 
 .editBtn--wrapper {
   background-color: white;
   margin-right: 8px;
+  min-width: 107px;
 }
 
 .editBtn--wrapper:hover,
