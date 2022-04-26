@@ -17,32 +17,27 @@ const NotesList = () => {
   const [notes, setNotes] = useState<stateProps[]>([
     {
       id: nanoid(),
-      text: 'test',
+      text: 'Edit this or create a new note to get started',
       date: '17/10/2002',
       color: '#fef68a',
-    },
-    {
-      id: nanoid(),
-      text: 'hello',
-      date: '19/10/2002',
-      color: 'lightblue',
     },
   ]);
 
   const [searchText, setSearchText] = useState('');
 
-  useEffect(() => {
-    const savedNotes = JSON.parse(
-      localStorage.getItem('react-notes-app-data')!
-    );
+  // on first load, set localstorage to default values as it does not exist
+  // everytime browser reloads make sure to get notes value from localstorage
+  // if notes change just update the localstore
 
+  useEffect(() => {
+    const savedNotes = JSON.parse(localStorage.getItem('notes-data')!);
     if (savedNotes) {
       setNotes(savedNotes);
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('react-notes-data', JSON.stringify(notes));
+    localStorage.setItem('notes-data', JSON.stringify(notes));
   }, [notes]);
 
   const handleAddNote = (text: string): void => {
