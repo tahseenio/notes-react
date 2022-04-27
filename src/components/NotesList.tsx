@@ -24,13 +24,13 @@ const NotesList = () => {
       id: nanoid(),
       text: 'First note',
       date: '26 April 2022, 20:46',
-      color: '#e6b905',
+      color: '#ffe793',
     },
     {
       id: nanoid(),
       text: 'Second note',
       date: '26 April 2022, 20:47',
-      color: '#aaaaaa',
+      color: '#ffffff',
     },
     {
       id: nanoid(),
@@ -48,15 +48,11 @@ const NotesList = () => {
       id: nanoid(),
       text: 'Delete me!',
       date: '26 April 2022, 20:47',
-      color: '#e6b905',
+      color: '#ffe793',
     },
   ]);
 
   const [searchText, setSearchText] = useState('');
-
-  // on first load, set localstorage to default values as it does not exist
-  // everytime browser reloads make sure to get notes value from localstorage
-  // if notes change just update the localstore
 
   useEffect(() => {
     const savedNotes = JSON.parse(localStorage.getItem('notes-data')!);
