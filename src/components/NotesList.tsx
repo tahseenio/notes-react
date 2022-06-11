@@ -4,7 +4,7 @@ import Note from './Note';
 import Search from './Search';
 import Header from './Header';
 import { NotesContext } from '../context/NotesContext';
-
+import { AnimatePresence } from 'framer-motion';
 interface stateProps {
   id: string;
   text: string;
@@ -151,8 +151,13 @@ const NotesList = () => {
         <Header />
         <Search />
         <section className='notes__list'>
-          {!searchText}
-          {updatedNotes.length === 0 ? <div>No notes found</div> : updatedNotes}
+          <AnimatePresence>
+            {updatedNotes.length === 0 ? (
+              <div>No notes found</div>
+            ) : (
+              updatedNotes
+            )}
+          </AnimatePresence>
         </section>
         {/* <pre>{JSON.stringify(notes, null, 2)}</pre> */}
       </main>

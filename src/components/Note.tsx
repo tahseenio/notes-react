@@ -4,6 +4,7 @@ import { ColorChangeContext } from '../context/ColorChangeContext';
 import { NotesContext } from '../context/NotesContext';
 import { ContextProps } from '../context/NotesContext';
 import { ColorPane } from './ColorPane';
+import { motion } from 'framer-motion';
 interface Props {
   id: string;
   text: string;
@@ -22,7 +23,14 @@ export default function Note({ id, text, date, color }: Props) {
 
   return (
     <ColorChangeContext.Provider value={{ toggleColorPane, id }}>
-      <div className='note' style={{ backgroundColor: color }}>
+      <motion.div
+        className='note'
+        layout='position'
+        style={{ backgroundColor: color }}
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0, transition: { duration: 0.2 } }}
+      >
         <textarea
           className='note__input'
           cols={10}
@@ -58,7 +66,7 @@ export default function Note({ id, text, date, color }: Props) {
         </div>
 
         {colorPane && <ColorPane {...{ ...toggleColorPane }} />}
-      </div>
+      </motion.div>
     </ColorChangeContext.Provider>
   );
 }
