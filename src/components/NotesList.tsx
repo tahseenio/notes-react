@@ -152,7 +152,7 @@ const NotesList = () => {
         <Header />
         <Search />
         <section className='notes__list'>
-          <AnimatePresence>
+          <AnimatePresence initial={false}>
             {updatedNotes.length === 0 ? (
               <div>No notes found</div>
             ) : (
