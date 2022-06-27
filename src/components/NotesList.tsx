@@ -13,52 +13,53 @@ interface stateProps {
 }
 
 const NotesList = () => {
-  const [notes, setNotes] = useState<stateProps[]>([
-    {
-      id: nanoid(),
-      text: 'Edit this or create a new note to get started',
-      date: '26 April 2022, 17:39',
-      color: '#6fd262',
-    },
-    {
-      id: nanoid(),
-      text: 'First note',
-      date: '26 April 2022, 20:46',
-      color: '#ffe793',
-    },
-    {
-      id: nanoid(),
-      text: 'Second note',
-      date: '26 April 2022, 20:47',
-      color: '#ffffff',
-    },
-    {
-      id: nanoid(),
-      text: 'Hello World',
-      date: '26 April 2022, 20:47',
-      color: '#c78eff',
-    },
-    {
-      id: nanoid(),
-      text: 'Fifth note',
-      date: '26 April 2022, 20:47',
-      color: '#ff6d5b',
-    },
-    {
-      id: nanoid(),
-      text: 'Delete me!',
-      date: '26 April 2022, 20:47',
-      color: '#ffe793',
-    },
-  ]);
+  const [notes, setNotes] = useState<stateProps[]>([]);
 
   const [searchText, setSearchText] = useState('');
 
   useEffect(() => {
+    const GenericNotes = [
+      {
+        id: nanoid(),
+        text: 'Edit this or create a new note to get started',
+        date: '26 April 2022, 17:39',
+        color: '#6fd262',
+      },
+      {
+        id: nanoid(),
+        text: 'First note',
+        date: '26 April 2022, 20:46',
+        color: '#ffe793',
+      },
+      {
+        id: nanoid(),
+        text: 'Second note',
+        date: '26 April 2022, 20:47',
+        color: '#ffffff',
+      },
+      {
+        id: nanoid(),
+        text: 'Hello World',
+        date: '26 April 2022, 20:47',
+        color: '#c78eff',
+      },
+      {
+        id: nanoid(),
+        text: 'Fifth note',
+        date: '26 April 2022, 20:47',
+        color: '#ff6d5b',
+      },
+      {
+        id: nanoid(),
+        text: 'Delete me!',
+        date: '26 April 2022, 20:47',
+        color: '#ffe793',
+      },
+    ];
     const savedNotes = JSON.parse(localStorage.getItem('notes-data')!);
     if (savedNotes) {
       setNotes(savedNotes);
-    }
+    } else setNotes(GenericNotes);
   }, []);
 
   useEffect(() => {
