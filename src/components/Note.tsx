@@ -4,7 +4,7 @@ import { ColorChangeContext } from '../context/ColorChangeContext';
 import { NotesContext } from '../context/NotesContext';
 import { ContextProps } from '../context/NotesContext';
 import { ColorPane } from './ColorPane';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 interface Props {
   id: string;
   text: string;
@@ -25,7 +25,6 @@ export default function Note({ id, text, date, color }: Props) {
     <ColorChangeContext.Provider value={{ toggleColorPane, id }}>
       <motion.div
         className='note'
-        layout='position'
         style={{ backgroundColor: color }}
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -67,6 +66,7 @@ export default function Note({ id, text, date, color }: Props) {
 
         {colorPane && <ColorPane {...{ ...toggleColorPane }} />}
       </motion.div>
+      {/* </AnimatePresence> */}
     </ColorChangeContext.Provider>
   );
 }

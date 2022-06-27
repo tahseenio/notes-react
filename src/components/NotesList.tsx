@@ -18,6 +18,11 @@ const NotesList = () => {
   const [searchText, setSearchText] = useState('');
 
   useEffect(() => {
+    console.log(notes);
+  }, [notes]);
+
+  useEffect(() => {
+    console.log('ran here');
     const GenericNotes = [
       {
         id: nanoid(),
@@ -57,13 +62,16 @@ const NotesList = () => {
       },
     ];
     const savedNotes = JSON.parse(localStorage.getItem('notes-data')!);
+    console.log(savedNotes);
     if (savedNotes) {
+      console.log('exist here?');
       setNotes(savedNotes);
     } else setNotes(GenericNotes);
   }, []);
 
   useEffect(() => {
     localStorage.setItem('notes-data', JSON.stringify(notes));
+    console.log(localStorage.getItem('notes-data')!);
   }, [notes]);
 
   const handleAddNote = (text: string): void => {
