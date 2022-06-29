@@ -19,7 +19,7 @@ A simple notes app where you can create, edit, and delete notes. All stored in l
 
 - react-icons for icons
 
-## Lessons Learned:
+## Lessons Learned
 - I learned how to use React TypeScript better especially when introducing the use of Context API.
 - I have also learned the basics of creating responsive grid layouts
 - Solidifed knowledge of important JS methods such as .map and .filter 
