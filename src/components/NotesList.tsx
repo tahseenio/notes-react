@@ -160,13 +160,11 @@ const NotesList = () => {
         <Header />
         <Search />
         <section className='notes__list'>
-          <AnimatePresence initial={false}>
-            {updatedNotes.length === 0 ? (
-              <div>No notes found</div>
-            ) : (
-              updatedNotes
-            )}
-          </AnimatePresence>
+          {updatedNotes.length === 0 ? (
+            <div>No notes found</div>
+          ) : (
+            <AnimatePresence initial={false}>{updatedNotes}</AnimatePresence>
+          )}
         </section>
         {/* <pre>{JSON.stringify(notes, null, 2)}</pre> */}
       </main>
