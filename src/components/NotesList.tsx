@@ -122,19 +122,17 @@ const NotesList = () => {
     setNotes(changedNote);
   };
 
-  // useEffect(() => {
-  //   const updatedNotes = notes
-  //     .filter((elem) => elem.text.toLowerCase().includes(searchText))
-  //     .map((note) => (
-  //       <Note
-  //         key={note.id}
-  //         id={note.id}
-  //         text={note.text}
-  //         date={note.date}
-  //         color={note.color}
-  //       />
-  //     ));
-  // });
+  const updatedNotes = notes
+    .filter((elem) => elem.text.toLowerCase().includes(searchText))
+    .map((note) => (
+      <Note
+        key={note.id}
+        id={note.id}
+        text={note.text}
+        date={note.date}
+        color={note.color}
+      />
+    ));
 
   const handleColorChange = (color: string, id: string) => {
     const updatedNotes = notes.map((elem) => {
@@ -163,20 +161,10 @@ const NotesList = () => {
         <Search />
         <section className='notes__list'>
           <AnimatePresence initial={false}>
-            {notes.length === 0 ? (
+            {updatedNotes.length === 0 ? (
               <div>No notes found</div>
             ) : (
-              notes
-                .filter((elem) => elem.text.toLowerCase().includes(searchText))
-                .map((note) => (
-                  <Note
-                    key={note.id}
-                    id={note.id}
-                    text={note.text}
-                    date={note.date}
-                    color={note.color}
-                  />
-                ))
+              updatedNotes
             )}
           </AnimatePresence>
         </section>
